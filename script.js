@@ -15,11 +15,6 @@ async function buscarClima() {
     return;
   }
 
-  if (!cidade.includes(",")) {
-    resultado.innerHTML = "Dica: use o formato 'Cidade, País' ou 'Cidade, Estado'.";
-    return;
-  }
-
   resultado.innerHTML = "Carregando...";
 
   try {
