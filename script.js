@@ -1,5 +1,11 @@
 const apiKey = "6c1576401d364d5f98a174915250606";
 
+function removerAcentos(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+const cidade = removerAcentos(document.getElementById("cityInput").value.trim());
+
+
 async function buscarClima() {
   const cidade = document.getElementById("cityInput").value.trim();
   const resultado = document.getElementById("weatherResult");
@@ -9,6 +15,10 @@ async function buscarClima() {
     return;
   }
 
+  if (!cidade.includes(",")) {
+    resultado.innerHTML = "Dica: use o formato 'Cidade, País' ou 'Cidade, Estado'.";
+    return;
+  }
 
   resultado.innerHTML = "Carregando...";
 
